@@ -1,6 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 const { ObjectID } = require('mongodb')
+// mongod.exe --dbpath \Users\user1\mongo-data
 
 var { mongoose } = require('./db/mongoose')
 var { Todo } = require('./models/todo')
@@ -34,7 +35,6 @@ app.get('/todos/:id', (req, res) => {
     var id = req.params.id
 
     if(!ObjectID.isValid(id)) {
-        console.log('Id is not valid')
         return res.status(404).send()
     }
 
